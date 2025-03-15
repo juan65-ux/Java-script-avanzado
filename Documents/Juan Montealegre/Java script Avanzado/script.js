@@ -211,3 +211,135 @@ Eso sería la explicación técnica
   puedes pensar que es como si JavaScript 
   moviese las declaraciones de funciones
    al principio del código.*/
+
+/*ARROW FUNCTION*/
+/*Las funciones flecha son una forma
+más concisa de crear funciones en JavaScript,
+y se han vuelto muy populares en los últimos años
+debido a su sintaxis simplificada.*/
+/*La sintaxis básica de una función flecha es la siguiente:*/
+
+const miFuncionFlecha = () => {
+  // código a ejecutar
+}
+
+/*son siempre funciones anónimas
+y function expressions. Esto significa
+que no tienen nombre y que se asignan a una variable.*/
+
+/*En lugar de la palabra clave function, 
+utilizamos una flecha => para definir la función. 
+También podemos omitir los paréntesis alrededor de los 
+parámetros si solo tenemos uno:*/
+const saludar = nombre => {
+  console.log("Hola " + nombre)
+}
+/*Ventajas de las funciones flecha*/
+
+/*Sintaxis más concisa: la sintaxis de las
+funciones flecha es más corta y más fácil de 
+leer que la sintaxis de las funciones regulares,
+especialmente cuando se trabaja con funciones de una sola línea.
+
+Return implícito: las funciones
+flecha puede devolver el valor de la
+expresión sin usar la palabra clave return
+cuando son de una sola línea. Esto hace que 
+las funciones flecha sean aún más cortas y más fáciles de leer.
+
+Funciones anónimas más legibles: las funciones 
+flecha son una forma más legible y concisa de
+crear funciones anónimas en JavaScript, lo cual
+puede hacer que nuestro código sea más fácil de entender.*/
+
+/*Return implícito*/
+/*Cuando una función flecha 
+tiene una sola expresión, podemos omitir
+las llaves {} y la palabra clave return para
+hacerla aún más corta. Esto se conoce como return implícito.*/
+// Declaración de función regular
+function sumar(a, b) {
+  return a + b
+}
+
+// Función flecha
+const sumarFlecha = (a, b) => {
+  return a + b
+}
+
+// Función flecha con return implícito
+const sumarFlecha = (a, b) => a + b
+/*En conclusion   la función 
+flecha con return implícito 
+es mucho más corta y fácil de leer 
+que la función regular. Esto es especialmente
+útil cuando estamos trabajando con funciones de una sola línea.*/
+
+/*RECURSIVIDAD*/
+/*La recursividad es una técnica
+de programación que consiste en
+que una función se llame a sí misma.*/
+
+/*Ejemplo de recursividad
+Vamos a crear una función que cuente desde un número hasta cero.*/
+function cuentaAtras(numero) {
+  // Condición base: Si el número que recibe es
+  // menor de 0 entonces salimos de la función
+  if (numero < 0) { return }
+
+  // Si el número era mayor o igual a 0, lo mostramos
+  console.log(numero)
+
+  // Y llamamos a la función con el número anterior
+  cuentaAtras(numero - 1)
+}
+/*Si llamamos a la función con el número 3, el resultado será:*/
+cuentaAtras(3)
+// -> 3
+// -> 2
+// -> 1
+// -> 0
+
+/*La ejecución la veríamos así:*/
+cuentaAtras(3) -> (muestra 3)
+               \ 
+          cuentaAtras(2) -> (muestra 2)
+                       \
+                  cuentaAtras(1) -> (muestra 1)
+                               \
+                          cuentaAtras(0) -> (muestra 0)
+                                        \
+                                   cuentaAtras(-1) -> salida
+/*¡Cuidado! Si no ponemos la
+condición base, la función se llamará
+infinitamente y el navegador se quedará bloqueado.
+Cuando hacemos recursividad SIEMPRE hay que tener
+una condición que haga que la función salga de sí misma.*/
+/*Usando recursividad y devolviendo un valor*/
+/*La recursividad se usa muchas veces para solucionar algoritmos. Por ejemplo, vamos a crear una función que calcule el factorial de un número.
+
+El factorial de un número es el 
+resultado de multiplicar ese número 
+por todos los anteriores hasta llegar a 1.
+Por ejemplo, el factorial de 5 es 5 * 4 * 3 * 2 * 1 = 120*/
+function factorial(n) {
+  // Condición base: Si el número es 0 o 1, devolvemos 1
+  // y no llamamos a la función de nuevo
+  if (n === 0 || n === 1) {
+    return 1
+  } else {
+    // Si el número es mayor que 1, llamamos a la función
+    return n * factorial(n - 1)
+  }
+}
+
+console.log(factorial(5)) // Resultado: 120
+console.log(factorial(3)) // Resultado: 6
+_________
+factorial(3) --------------------------> 6
+        \ 
+  3 * factorial(2) ---------------> 6
+          \
+    2 * factorial(1) -----------> 2
+            \
+      1 * factorial(0) -------> 1

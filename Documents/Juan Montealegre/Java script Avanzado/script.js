@@ -343,3 +343,399 @@ factorial(3) --------------------------> 6
     2 * factorial(1) -----------> 2
             \
       1 * factorial(0) -------> 1
+
+/*Arrays
+Los arrays (o arreglos) son estructuras de datos
+que permiten almacenar múltiples valores en una sola variable.
+Son muy útiles cuando necesitas manejar listas de elementos
+de manera organizada y eficiente.
+
+Hasta ahora hemos visto
+algunos tipos de datos. Cadenas de texto,
+números, booleanos... Pero... ¿Qué pasa si queremos
+tener una colección de ellos? En JavaScript tenemos los arrays.
+
+¿Para qué sirven los arrays?
+✅ Almacenar múltiples valores en una sola variable.
+✅ Acceder a los elementos fácilmente usando índices.
+✅ Recorrer la lista con bucles para procesar los datos.
+✅ Organizar y manipular datos mediante métodos como agregar,
+eliminar o modificar elementos.*/
+
+
+/*Declaración y asignación de arrays
+Para declarar un array usamos los corchetes [] y dentro
+los elementos de la colección separados por comas ,.
+
+Por ejemplo, para crear una colección de números del 1 al 5:*/
+[1, 2, 3, 4, 5]
+
+/*Los elementos de un array pueden ser de cualquier tipo,
+incluso otros arrays.*/
+[1, 2, 3, 4, [5, 6, 7, 8, 9]]
+
+/*Y, aunque no siempre sea recomendable,
+puedes mezclar tipos de datos dentro:*/
+['uno', 2, true, null, undefined]
+
+/*Para asignar un array a una variable,
+lo hacemos igual que con los otros tipos de datos:*/
+const numbers = [1, 2, 3, 4, 5]
+let names = ['Dani', 'Miguel', 'Maria']
+
+/*Acceso a los elementos de un array*/
+/*Para acceder a los elementos de un array usamos
+los corchetes [] y dentro el índice del elemento que queremos acceder.
+Los índices empiezan en 0.
+
+El índice es la posición del elemento dentro del array.
+El primer elemento tiene índice 0, el segundo índice 1,
+el tercero índice 2...*/
+const numbers = [1, 2, 3, 4, 5]
+
+console.log(numbers[0]) // 1
+console.log(numbers[2]) // 3
+
+/*Si intentamos acceder a un elemento que no existe nos devuelve undefined*/
+const numbers = [1, 2, 3, 4, 5]
+
+console.log(numbers[10]) // undefined
+/*Puedes usar variables para acceder a los elementos de un array.*/
+const numbers = [1, 2, 3, 4, 5]
+let index = 2
+
+console.log(numbers[index]) // 3
+/*Modificar elementos de un array
+Igual que podemos acceder a los elementos de un array,
+podemos modificarlos.*/
+const numbers = [1, 2, 3, 4, 5]
+
+numbers[0] = 10
+numbers[2] = 30
+
+console.log(numbers) // [10, 2, 30, 4, 5]
+
+/*WOW ¿Cómo es que pese a que hemos indicado que 
+es una constante const podemos modificar el Array?
+Aunque hay una explicación mucho más larga, que veremos más adelante,
+la respuesta corta es que const sólo impide que se reasigne el valor
+de la variable, no que se modifique el valor en sí.*/
+
+/*METODOS y propiedades de Array:
+Los metodos nos ayudan a trabajar de manera mas eficiente o permiten gestionar, 
+transformar y manipular datos de manera eficiente.
+
+🚀 Ventajas de Usar Métodos en Arrays
+✅ Hacen el código más corto y legible
+En lugar de usar un for, puedes usar forEach(), map(), filter(), etc., 
+lo que hace que el código sea más claro y fácil de mantener.
+
+✅ Mejoran la eficiencia
+Algunos métodos como filter() y map() crean nuevos
+arrays sin modificar el original, lo que evita errores inesperados.
+
+✅ Evitan escribir código manualmente
+Métodos como sort(), reverse(), concat(), etc.,
+facilitan la manipulación de datos sin necesidad 
+de escribir funciones desde cero.*/
+
+/*La longitud de un array
+Puedes conocer la longitud de una colección de elementos
+usando la propiedad .length:*/
+
+const frutas = ["manzana", "pera", "plátano", "fresa"]
+console.log(frutas.length) // 4
+/*También puedes cortar su longitud asignando un nuevo
+valor a la propiedad .length:*/
+
+const frutas = ["manzana", "pera", "plátano", "fresa"]
+frutas.length = 2
+
+console.log(frutas) // ["manzana", "pera"]
+console.log(frutas.length) // 2
+/*Métodos de arrays
+Cuando trabajamos con colecciones de elementos,
+vamos a querer hacer cosas con ellos. Por ejemplo:
+añadir un elemento, eliminarlo, buscarlo, etc.
+Para ello, los arrays tienen una serie de métodos
+que nos permiten hacer estas operaciones:
+
+.push()
+
+El método .push() nos permite añadir un elemento al final de un array:*/
+
+const frutas = ["plátano", "fresa"]
+frutas.push("naranja")
+console.log(frutas) // ["plátano", "fresa", "naranja"]
+/*Además, el método .push() devuelve la nueva longitud del array:*/
+
+const frutas = ["plátano", "fresa"]
+console.log(frutas.length) // 2
+
+const newLength = frutas.push("naranja")
+console.log(newLength) // 3
+console.log(frutas) // ["plátano", "fresa", "naranja"]
+.pop()
+/*El método .pop() elimina y devuelve el último elemento de un array:*/
+
+const frutas = ["plátano", "fresa", "naranja"]
+const ultimaFruta = frutas.pop()
+
+console.log(frutas) // ["plátano", "fresa"]
+console.log(ultimaFruta) // "naranja"
+.shift()
+/*El método .shift() elimina y devuelve el primer elemento de un array.
+Es lo mismo que .pop(), pero con el primer elemento en lugar del último:*/
+
+const frutas = ["plátano", "fresa", "naranja"]
+const primeraFruta = frutas.shift()
+
+console.log(frutas) // ["fresa", "naranja"]
+console.log(primeraFruta) // "plátano"
+.unshift()
+/*El método .unshift() añade un elemento al principio de un array. 
+Es lo mismo que .push(), pero con el primer elemento en lugar del último:*/
+
+const frutas = ["plátano", "fresa", "naranja"]
+frutas.unshift("manzana")
+
+console.log(frutas) // ["manzana", "plátano", "fresa", "naranja"]
+
+/*Concatenar arrays*/
+/*Podemos concatenar dos arrays usando el método concat().*/
+
+const numbers = [1, 2, 3]
+const numbers2 = [4, 5]
+
+const allNumbers = numbers.concat(numbers2)
+
+console.log(allNumbers) // [1, 2, 3, 4, 5]
+
+/*Otra forma de concatenar arrays es usando el operador ... (spread operator).
+Este operador propaga los elementos de un array. Así que podríamos hacer
+lo siguiente:*/
+
+const numbers = [1, 2, 3]
+const numbers2 = [4, 5]
+
+//                    1, 2, 3        4, 5                     
+const allNumbers = [...numbers, ...numbers2]
+
+console.log(allNumbers) // [1, 2, 3, 4, 5]
+
+/*Iteración de Arrays en JavaScript
+Ya hemos visto en clases anteriores cómo}
+podemos crear bucles con for y while. Con 
+estas estructuras de control, y una nueva que
+veremos en este clase, podemos también recorrer
+cada uno de los elementos de un array.
+
+Además, veremos como los propios arrays 
+tienen un método .forEach que nos permite ejecutar
+una función para cada uno de los elementos del array.
+
+Bucle while
+El bucle while vimos que permitía ejecutar 
+un bloque de código mientras una condición
+era verdadera. En el caso de la iteración
+de arrays, la condición generalmente se basa en el índice del elemento.
+
+Podemos, por ejemplo, crear una variable
+con let para guardar un puntero al índice 
+del elemento que estamos iterando. En cada
+iteración, podemos incrementar el valor de la
+variable en 1, para que en la siguiente iteración
+se imprima el siguiente elemento.*/
+
+let frutas = ['🍎', '🍌', '🍓']
+let i = 0 // lo usaremos como índice
+
+while (i < frutas.length) {
+  console.log(frutas[i]) // imprime el elemento en la posición i
+  i++ // incrementamos el índice en 1 para la siguiente iteración
+}
+
+️/*Arreglos en JavaScript
+Concepto
+Un arreglo (array) es una estructura de datos que permite almacenar varios valores en una sola variable.
+En JavaScript, los arreglos pueden contener diferentes tipos de datos (números, strings, objetos, etc.).*/
+
+/*Ejemplo
+js
+*/
+// Declaración de un arreglo
+let frutas = ["🍎", "🍌", "🍓", "🍍"];
+
+// Acceder a elementos del array
+console.log(frutas[0]); // 🍎
+
+// Recorrer el array con forEach
+frutas.forEach((fruta, index) => {
+  console.log(`Índice: ${index}, Fruta: ${fruta}`);
+});
+
+// Agregar elementos con push
+frutas.push("🍇"); 
+console.log(frutas); // ["🍎", "🍌", "🍓", "🍍", "🍇"]
+
+// Eliminar el último elemento con pop
+frutas.pop();
+console.log(frutas); // ["🍎", "🍌", "🍓", "🍍"]
+
+// Filtrar elementos (Ej: frutas que no sean 🍌)
+let sinBanana = frutas.filter(fruta => fruta !== "🍌");
+console.log(sinBanana); // ["🍎", "🍓", "🍍"]
+️
+ /*Programación Orientada a Objetos (POO)
+Concepto
+La Programación Orientada a Objetos (POO) se basa en el uso de clases y objetos.
+ Una clase es una plantilla para crear objetos con características (propiedades) y comportamientos (métodos).*/
+
+/*Ejemplo
+js*/
+
+// Definición de una clase
+class Persona {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+
+  // Método para mostrar información
+  saludar() {
+    console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+  }
+}
+
+// Crear objetos de la clase
+let persona1 = new Persona("Juan", 25);
+let persona2 = new Persona("Ana", 30);
+
+persona1.saludar(); // Hola, soy Juan y tengo 25 años.
+persona2.saludar(); // Hola, soy Ana y tengo 30 años.
+️/*Manejo de Eventos y el DOM
+Concepto
+El DOM (Document Object Model) representa la estructura de una página web en forma de árbol.
+Podemos modificarlo con JavaScript y manejar eventos como clics o movimientos del mouse.
+
+Ejemplo
+html
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Eventos y DOM</title>
+</head>
+<body>
+  <button id="miBoton">Haz clic</button>
+  <p id="mensaje"></p>
+
+  <script>
+    // Seleccionar elementos del DOM
+    let boton = document.getElementById("miBoton");
+    let mensaje = document.getElementById("mensaje");
+
+    // Agregar un evento de clic al botón
+    boton.addEventListener("click", () => {
+      mensaje.textContent = "¡Botón clickeado!";
+    });
+  </script>
+</body>
+</html>
+Se selecciona el botón y el párrafo con getElementById.
+Se agrega un evento de clic que cambia el texto del párrafo.*/
+ /*Módulos en JavaScript
+Concepto
+Los módulos permiten dividir el código en archivos reutilizables.
+Se exportan con export y se importan con import.
+
+Ejemplo
+📁 archivo: saludo.js (Módulo)
+js
+
+export function saludar(nombre) {
+  return `Hola, ${nombre}!`;
+}
+📁 archivo: main.js (Importación del módulo)
+js
+
+import { saludar } from "./saludo.js";
+
+console.log(saludar("Juan")); // Hola, Juan!
+💡 Nota: Para usar módulos, el archivo HTML debe incluir type="module":
+
+html
+
+<script type="module" src="main.js"></script> */
+
+
+/*Programación Asíncrona
+Concepto
+La programación asíncrona permite ejecutar tareas sin bloquear 
+el flujo principal del código. Se usan callbacks, promesas (Promise) y async/await.
+
+Ejemplo con setTimeout (Callback)
+js
+
+console.log("Inicio");
+
+// Tarea asíncrona después de 2 segundos
+setTimeout(() => {
+  console.log("Esto aparece después de 2 segundos");
+}, 2000);
+
+console.log("Fin");
+Salida:
+
+nginx
+
+Inicio
+Fin
+Esto aparece después de 2 segundos
+Ejemplo con Promesas (Promise)
+js
+
+function descargarArchivo() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let exito = true; // Cambia a false para probar el error
+      if (exito) {
+        resolve("Archivo descargado ✅");
+      } else {
+        reject("Error en la descarga ❌");
+      }
+    }, 3000);
+  });
+}
+
+// Uso de la promesa
+descargarArchivo()
+  .then(mensaje => console.log(mensaje))
+  .catch(error => console.error(error));
+Ejemplo con async/await
+js
+
+async function proceso() {
+  console.log("Iniciando...");
+
+  try {
+    let resultado = await descargarArchivo();
+    console.log(resultado);
+  } catch (error) {
+    console.error(error);
+  }
+
+  console.log("Proceso terminado.");
+}
+
+proceso();
+Salida esperada:
+
+scss
+
+Iniciando...
+(Después de 3 segundos)
+Archivo descargado ✅
+Proceso terminado.*/
+
+
